@@ -47,7 +47,7 @@ npm run task:create
 ```
 and I receive this kind of answer
 
-
+![result](MMOS_Galaxy_bee.png)
 
 
 

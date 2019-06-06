@@ -49,5 +49,5 @@ and I receive this kind of answer
 
 ![result](MMOS_Galaxy_bee.png)
 
-
+The next step will be to make similar work to allow the Galaxy user to send its task answer to MMOS through the MMOS API api.classifications.create function
 

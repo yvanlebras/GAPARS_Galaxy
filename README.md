@@ -53,3 +53,9 @@ The next step will be to make similar work to allow the Galaxy user to send its 
 
 This assumes you have saved the create task timestamp in task.created, and that the result variable corresponds to it's validation schema (attached), essentially, your result variable should be one of the following: ["female", "likelyFemale", "cantSee", "likelyMale", "male"]
 Please note it's case sensitive.
+
+
+So the idea is :
+- using the "task:create" function (through index.js), Galaxy can display a bee picture
+- the user has to clic on one of the answer possibilities ("female", "likelyFemale", "cantSee", "likelyMale", "male"), the selected answer is stored in task.created.
+- the "classification" funtion is "called" (through index.js.classification) and give the answer, for example "female", to MMOS portal.

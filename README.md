@@ -40,7 +40,7 @@ So idea is to use this on 2 different manners:
 - first, to display a randomizely selected picture of bee once a galaxy user submitted a job using webhook functionality in the same spirit than you made with PhDcomics
 - second, to import a picture into a Galaxy history, so the user can use bioimaging tools inside Galaxy to treat / analyse the picture and send the results back to MMOS. Here we will use a "classical Galaxy tool" to get picture and another one to send analysis results
 
-For now, I have to use the code with these command lines :
+For now, I have to use the code with these command lines (to use the index.js file so the "task:create" function:
 ```
 npm install;
 npm run task:create
@@ -49,5 +49,7 @@ and I receive this kind of answer
 
 ![result](MMOS_Galaxy_bee.png)
 
-The next step will be to make similar work to allow the Galaxy user to send its task answer to MMOS through the MMOS API api.classifications.create function
+The next step will be to make similar work to allow the Galaxy user to send its task answer to MMOS through the MMOS API api.classifications.create function. Here we are working on the index.js.classification file
 
+This assumes you have saved the create task timestamp in task.created, and that the result variable corresponds to it's validation schema (attached), essentially, your result variable should be one of the following: ["female", "likelyFemale", "cantSee", "likelyMale", "male"]
+Please note it's case sensitive.

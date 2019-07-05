@@ -1,4 +1,13 @@
-'use strict';
+import $ from 'jquery';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css'
+import "./index.css"
+// 'use strict';
+
+$("#male-btn").on("click", () => console.log("male"))
+$("#female-btn").on("click", () => console.log("female"))
+
+
 
 async function main() {
     console.log('Calling MMOS API...');
@@ -31,4 +40,4 @@ async function main() {
     }
 }
 
-main();
+// main();

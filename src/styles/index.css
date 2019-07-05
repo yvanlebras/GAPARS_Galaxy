@@ -2,7 +2,9 @@
 .img-btn {
     cursor: pointer;
 }
-
+.card-no-border {
+    border: none;
+}
 /* overlay-container needed to position the overlay. Adjust the width as needed */
 
 .overlay-container {

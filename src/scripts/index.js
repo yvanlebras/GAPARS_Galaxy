@@ -7,9 +7,11 @@ import "../styles/index.css"
 
 $("#male-btn").on("click", () => console.log("male"))
 $("#female-btn").on("click", () => console.log("female"))
-$("#eco-img").on("click", () => console.log("change image"))
+$("#eco-img").on("click", foo)
 
-
+function foo() {
+    console.log("reload");
+}
 async function main() {
     console.log('Calling MMOS API...');
 

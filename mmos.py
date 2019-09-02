@@ -1,23 +1,21 @@
-import os
-import hmac
-import random
-import time
-import json
 import hashlib
+import hmac
+import json
+import os
+import random
 import requests
+import time
+import yaml
 
 
 class Client:
-    def __init__(self):
+    def __init__(self, MMOS_API_KEY, MMOS_API_SECRET, **kwargs):
         self.protocol = "https"
         self.host = "api.depo.mmos.blue"
         self.port = 443
         self.version = "v2"
         self.game = "yvan-le-bras-mnhn-fr"
-        self.apiKey = {
-            "key": os.environ["MMOS_API_KEY"],
-            "secret": os.environ["MMOS_API_SECRET"],
-        }
+        self.apiKey = {"key": MMOS_API_KEY, "secret": MMOS_API_SECRET}
 
         self.playerCode = "YVAN001"
         self.projectCode = "spipoll-fly"
@@ -34,7 +32,7 @@ class Client:
         nonce = random.randint(0, 1000000000)
         timestamp = int(time.time() * 1000)
 
-        timestamp = 1567416082496
+        # timestamp = 1567416082496
         # nonce = 222773350332
 
         contentParts = [
@@ -91,6 +89,9 @@ class Client:
 
 
 if __name__ == "__main__":
-    m = Client()
+    with open(os.environ.get("CONFIG_PATH", "./config.yaml"), "r") as f:
+        config = yaml.safe_load(f)
+
+    m = Client(**config)
     print(m.info())
     print(m.create_task())

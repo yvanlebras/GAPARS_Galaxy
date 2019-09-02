@@ -1,0 +1,109 @@
+<html>
+    <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    </head>
+
+<style type='text/css'>
+
+.img-btn {
+    cursor: pointer;
+}
+.card {
+    border: none;
+}
+/* overlay-container needed to position the overlay. Adjust the width as needed */
+
+.overlay-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+        border: 5px solid transparent;
+}
+
+/* Make the image to responsive */
+
+.image-overlay {
+    width: 100%;
+    height: auto;
+}
+
+/* The overlay effect (full height and width) - lays on top of the overlay-container and over the image */
+
+.hidden {
+    visibility: hidden;
+}
+
+.dim {
+    transition: .3s ease;
+    opacity: 0.5;
+}
+
+.selected {
+    border: 5px solid green;
+}
+
+</style>
+<body>
+
+    <div class="container-fluid">
+        <div class="d-flex flex-row justify-content-center">
+            <div class="overlay-container">
+                <img class="image-overlay img-fluid rounded float-left" src="./img/Example_image_task.jpg">
+            </div>
+        </div>
+        <div class="row justify-content-md-center mt-3">
+            <div class="">
+                <div class="card-group">
+                    <div class="card">
+                        <div id="male-container" class="overlay-container">
+                            <img style="width:200px;" class="image-overlay img-btn card-img-top" src="./img/male.png"
+                                alt="male">
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div  id="female-container"class="overlay-container">
+                            <img style="width:200px;" class="image-overlay img-btn card-img-top" src="./img/female.png"
+                                alt="female">
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 1em;">
+                    <form method="POST">
+                        <input type="hidden" name="sex" id="sex" value="unknown">
+                        <input type="hidden" name="task_id"      id="task_id"      value="">
+                        <input type="hidden" name="task_created" id="task_created" value="">
+                        <button id="submit-button" type="submit" class="btn btn-primary hidden">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <script type="text/javascript">
+        $("#male-container").on("click", function(){
+            console.log('male');
+            $("#female-container").addClass("dim");
+            $("#female-container").removeClass("selected");
+            $("#male-container").removeClass("dim");
+            $("#male-container").addClass("selected");
+            $("#sex").val("male");
+
+            $("#submit-button").removeClass("hidden");
+        });
+
+        $("#female-container").on("click", function(){
+            console.log('female');
+            $("#male-container").addClass("dim");
+            $("#male-container").removeClass("selected");
+            $("#female-container").removeClass("dim");
+            $("#female-container").addClass("selected");
+            $("#sex").val("female");
+
+            $("#submit-button").removeClass("hidden");
+        });
+
+    </script>
+
+</body>
+</html>

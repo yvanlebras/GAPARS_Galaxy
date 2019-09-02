@@ -14,7 +14,7 @@ class Client:
         self.host = "api.depo.mmos.blue"
         self.port = 443
         self.version = "v2"
-        self.game = "yvan-le-bras-mnhn-fr"
+        self.game = "dev-yvan-le-bras-mnhn-fr"
         self.apiKey = {"key": MMOS_API_KEY, "secret": MMOS_API_SECRET}
 
         self.playerCode = "YVAN001"

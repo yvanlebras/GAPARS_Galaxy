@@ -93,5 +93,5 @@ if __name__ == "__main__":
         config = yaml.safe_load(f)
 
     m = Client(**config)
-    print(m.info())
-    print(m.create_task())
+    __import__('pprint').pprint(m.info())
+    __import__('pprint').pprint(m.create_task())

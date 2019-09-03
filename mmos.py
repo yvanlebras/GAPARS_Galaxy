@@ -78,10 +78,15 @@ class Client:
     def classify(self, sex, task_created, task_id):
         path = "/classifications"
         body = {
-            "task": {"id": task_id, "result": {"gender": sex}},
-            "circumstances": {"t": time.time() - int(task_created)},
-            "player": {"accountcode": self.playerCode},
+            "game": self.game,
+            # "taskId": task_id,
+            # "playerCode": self.playerCode,
             "playergroup": "group1122",
+            # "result": {"gender": sex},
+            "circumstances": {"t": time.time() - int(task_created)},
+            "task": {"id": int(task_id), "result": {"gender": sex}},
+            "player":  self.playerCode,
+            # "playergroup": "group1122",
         }
         headers = self.build_headers("POST", path, body)
         r = requests.post(self.urlBase + path, headers=headers, json=body)

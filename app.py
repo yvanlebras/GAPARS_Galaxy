@@ -37,7 +37,7 @@ def index():
         task_created = request.values.get("task_created")
         task_id = request.values.get("task_id")
 
-        m.classify(sex, task_created, task_id)
+        print(m.classify(sex, task_created, task_id))
 
     t = m.create_task()
     created = int(time.time())

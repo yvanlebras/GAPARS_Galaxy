@@ -32,16 +32,19 @@ def send_img(path):
 # Handle tasks
 @app.route("/", methods=["GET", "POST"])
 def index():
+    thanks = False
+
     if request.method == "POST":
         sex = request.values.get("sex")
         task_created = request.values.get("task_created")
         task_id = request.values.get("task_id")
+        thanks = True
 
         print(m.classify(sex, task_created, task_id))
 
     t = m.create_task()
     created = int(time.time())
-    return template("guess.html", t=t['task'], created=created)
+    return template("guess.html", t=t['task'], created=created, thanks=thanks)
 
 
 if __name__ == "__main__":

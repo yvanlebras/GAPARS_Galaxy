@@ -80,7 +80,7 @@ class Client:
         body = {
             "task": {"id": task_id, "result": {"gender": sex}},
             "circumstances": {"t": time.time() - int(task_created)},
-            "player": {"accountcode": self.playercode},
+            "player": {"accountcode": self.playerCode},
             "playergroup": "group1122",
         }
         headers = self.build_headers("POST", path, body)

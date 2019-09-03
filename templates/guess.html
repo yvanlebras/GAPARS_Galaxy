@@ -8,17 +8,15 @@
 
 <style type='text/css'>
 
-.img-btn {
-    cursor: pointer;
-}
 .card {
     border: none;
 }
 /* overlay-container needed to position the overlay. Adjust the width as needed */
 
 .overlay-container {
+    cursor: pointer;
     position: relative;
-    width: 100%;
+    width: 148px;
     max-width: 800px;
         border: 5px solid transparent;
 }
@@ -50,8 +48,16 @@
 
     <div class="container-fluid">
         <div class="d-flex flex-row justify-content-center">
-            <div class="overlay-container">
-                <img class="image-overlay img-fluid rounded float-left" src="./img/Example_image_task.jpg">
+			<div>
+			<h3>Citizen Science Project</h3>
+			</div>
+			<div>
+			Help us identify the sex of these bees! Look at the bee image, and then select a label below that you think fits best
+			</div>
+		</div>
+        <div class="d-flex flex-row justify-content-center">
+            <div>
+                <img class="image-overlay img-fluid rounded float-left" src="{{ t.assets.url }}">
             </div>
         </div>
         <div class="row justify-content-md-center mt-3">
@@ -59,50 +65,72 @@
                 <div class="card-group">
                     <div class="card">
                         <div id="male-container" class="overlay-container">
-                            <img style="width:200px;" class="image-overlay img-btn card-img-top" src="./img/male.png"
-                                alt="male">
+                            <img style="width:138px;" class="image-overlay img-btn card-img-top" src="./img/male.png" alt="male">
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div id="likely-male-container" class="overlay-container" style="padding-top: 3.5em;text-align:center;height:100%;">
+                            Likely male
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div id="unknown-container" class="overlay-container" style="padding-top: 3.5em;text-align:center;height:100%;">
+                            Unknown
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div id="likely-female-container" class="overlay-container" style="padding-top: 3.5em;text-align:center;height:100%;">
+                            Likely female
                         </div>
                     </div>
                     <div class="card">
                         <div  id="female-container"class="overlay-container">
-                            <img style="width:200px;" class="image-overlay img-btn card-img-top" src="./img/female.png"
-                                alt="female">
+                            <img style="width:138px;" class="image-overlay img-btn card-img-top" src="./img/female.png" alt="female">
                         </div>
                     </div>
                 </div>
                 <div style="text-align: center; margin-top: 1em;">
                     <form method="POST">
                         <input type="hidden" name="sex" id="sex" value="unknown">
-                        <input type="hidden" name="task_id"      id="task_id"      value="">
-                        <input type="hidden" name="task_created" id="task_created" value="">
+                        <input type="hidden" name="task_id"      id="task_id"      value="{{ t.id }}">
+                        <input type="hidden" name="task_created" id="task_created" value="{{ created }}">
                         <button id="submit-button" type="submit" class="btn btn-primary hidden">Submit</button>
                     </form>
                 </div>
             </div>
         </div>
     <script type="text/javascript">
-        $("#male-container").on("click", function(){
-            console.log('male');
-            $("#female-container").addClass("dim");
-            $("#female-container").removeClass("selected");
-            $("#male-container").removeClass("dim");
-            $("#male-container").addClass("selected");
-            $("#sex").val("male");
+        var containers = ["female", "likely-female", "unknown", "likely-male", "male"];
+
+        function others(mine){
+            var n = [];
+            for(var k in containers) {
+                if(containers[k] != mine){
+                    n.push("#" + containers[k] + "-container");
+                }
+            }
+            return n;
+        }
+
+        $(".overlay-container").on("click", function(event){
+            var c = event.currentTarget.id;
+            var c_id = c.replace('-container', '');
+            console.log(c);
+
+            // Dim the others
+            var other = others(c_id);
+            for(var k in other){
+                $(other[k]).addClass("dim");
+                $(other[k]).removeClass("selected");
+            }
+
+            // And undim ourselves
+            $("#" + c).removeClass("dim");
+            $("#" + c).addClass("selected");
+            $("#sex").val(c_id);
 
             $("#submit-button").removeClass("hidden");
         });
-
-        $("#female-container").on("click", function(){
-            console.log('female');
-            $("#male-container").addClass("dim");
-            $("#male-container").removeClass("selected");
-            $("#female-container").removeClass("dim");
-            $("#female-container").addClass("selected");
-            $("#sex").val("female");
-
-            $("#submit-button").removeClass("hidden");
-        });
-
     </script>
 
 </body>

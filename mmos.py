@@ -83,7 +83,7 @@ class Client:
             # "playerCode": self.playerCode,
             "playergroup": "group1122",
             # "result": {"gender": sex},
-            "circumstances": {"t": time.time() - int(task_created)},
+            "circumstances": {"t": int(time.time() - int(task_created))},
             "task": {"id": int(task_id), "result": {"gender": sex}},
             "player":  self.playerCode,
             # "playergroup": "group1122",

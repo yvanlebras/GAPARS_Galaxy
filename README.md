@@ -1,5 +1,19 @@
 # GAPARS_Galaxy
 
+## Galaxy-Bricks
+
+Goal: Data literacy teaching activities
+- Galaxy tools and workflows with associated teaching activities
+- Wireframes
+  - NGPhylogeny version https://xd.adobe.com/view/67f3b137-4f58-4349-5c51-de2cef02ca4d-11c2/grid
+  - Scratch3 version https://xd.adobe.com/view/a762f0fb-00b9-490d-57e4-18e73ab60251-d153/
+- Code
+  - Scratch3 WIP https://github.com/yvanlebras/Scratch3Galaxy
+  - NGPhylogeny planned for September 2020
+
+
+## MOODA (Massive Open Online Data Analysis)
+
 So I have a manner to interact with the MMOS portal through MMOS API and receive the URL of a bee picture that the user has to identify.
 
 To do so, I am using 

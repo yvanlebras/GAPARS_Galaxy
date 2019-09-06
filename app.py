@@ -1,4 +1,5 @@
 import os
+import json
 import time
 import yaml
 from flask import Flask
@@ -29,6 +30,7 @@ def template(name, **context):
 def send_img(path):
     return send_from_directory("img", path)
 
+
 # Handle tasks
 @app.route("/", methods=["GET", "POST"])
 def index():
@@ -40,11 +42,11 @@ def index():
         task_id = int(request.values.get("task_id"))
         thanks = True
 
-        print(m.classify(sex, task_created, task_id))
+        print(json.dumps(m.classify(sex, task_created, task_id)))
 
     t = m.create_task()
     created = int(time.time() * 1000)
-    return template("guess.html", t=t['task'], created=created, thanks=thanks)
+    return template("guess.html", t=t["task"], created=created, thanks=thanks)
 
 
 if __name__ == "__main__":

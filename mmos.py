@@ -85,7 +85,7 @@ class Client:
             # "result": {"gender": sex},
             "circumstances": {"t": int((time.time() * 1000) - task_created)},
             "task": {"id": task_id, "result": {"gender": sex}},
-            "player":  self.playerCode,
+            "player": self.playerCode,
             # "playergroup": "group1122",
         }
         headers = self.build_headers("POST", path, body)
@@ -98,5 +98,5 @@ if __name__ == "__main__":
         config = yaml.safe_load(f)
 
     m = Client(**config)
-    __import__('pprint').pprint(m.info())
-    __import__('pprint').pprint(m.create_task())
+    __import__("pprint").pprint(m.info())
+    __import__("pprint").pprint(m.create_task())
